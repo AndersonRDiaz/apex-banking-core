@@ -23,5 +23,15 @@ public class Main {
         // TESTE 3: Tentar sacar 100 (Saldo é -150, limite restante é 50. Bloqueia!)
         cc.withdraw(100.00);
         System.out.println("Saldo final: $" + cc.getBalance());
+
+        System.out.println("------------------------------------------------");
+        CheckingAccount c1 = new CheckingAccount("Anderson",1000.00, 500.00);
+        System.out.println("Conta anderson: $" + c1.getBalance());
+        System.out.println("Saldo inicial real: $" + c1.getBalance());
+        System.out.println("Saldo do cheque especial: $" + c1.getOverdraftLimit());
+
+        c1.withdraw(1500.00);
+        System.out.println("Saldo apos saque de : $" + c1.getBalance());
+
     }
 }
