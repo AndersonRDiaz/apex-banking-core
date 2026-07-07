@@ -29,10 +29,10 @@ public class CheckingAccount extends Account{
      */
 
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws InsufficientFundsException{
         // Regra 1: Bloqueia se o valor do saque for MAIOR que (saldo + limite)
         if (amount > (balance + overdraftLimit)){
-            System.out.print("Saldo e cheque especial insuficientes\n");
+            throw new InsufficientFundsException("Saldo e cheque especial insuficientes");
         }
         // Regra 2: Se o cliente tiver saldo real suficiente, debita diretamente dele
         else if (amount <= balance) {

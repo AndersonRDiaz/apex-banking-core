@@ -45,10 +45,11 @@ public class Account {
      * Este comportamento padrão impede que a conta fique negativa.
      */
 
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws InsufficientFundsException{
         // Bloqueia a operação se o valor solicitado ultrapassar o saldo em conta
         if (amount > balance) {
-            System.out.print("Saldo insuficiente\n");
+            // Jogamos a exceção para o ar!
+            throw new InsufficientFundsException("Erro: Saldo insuficiente para realizar o saque de $ " + amount);
         } else {
             // Deduz a quantia diretamente do saldo disponível
             this.balance -= amount;
