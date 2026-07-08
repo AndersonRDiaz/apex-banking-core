@@ -37,11 +37,13 @@ public class CheckingAccount extends Account{
         // Regra 2: Se o cliente tiver saldo real suficiente, debita diretamente dele
         else if (amount <= balance) {
             this.balance -= amount;
+            this.historic.add("Saque via Saldo Real: -$" + amount);
             System.out.printf("Saque de %.2f realizado com sucesso usando seu Saldo Real\n", amount);
         }
         // Regra 3: Se não tiver saldo real suficiente, mas passar no primeiro teste, usou o limite!
         else {
             this.balance -= amount;
+            this.historic.add("Saque via Cheque Especial: -$" + amount);
             System.out.printf("Saque de %.2f realizado com sucesso no cheque especial\n", amount);
         }
     }
