@@ -1,12 +1,7 @@
-# Ignorar pastas de configuração do IntelliJ
 .idea/
 *.iml
-
-# Ignorar a pasta de arquivos compilados pelo Java
 out/
-
-# Ignorar arquivos temporários do sistema operacional Mac
 .DS_Store
-
-# Ignorar arquivos temporários do Windows (caso use algum dia)
 Thumbs.db
+target/
+*.class
