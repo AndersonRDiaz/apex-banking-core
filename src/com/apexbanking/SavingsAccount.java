@@ -1,22 +1,19 @@
 package com.apexbanking;
 
-/**
- * Representa uma conta poupança no ecossistema Apex Banking.
- * Esta classe herda as características fundamentais de uma conta bancária,
- * mas adiciona regras para rendimento de juros sobre o saldo positivo.
- */
+import jakarta.persistence.*;
+
+@Entity // Avisa o Hibernate que esta classe é uma entidade do banco
+@Table(name = "tb_savings_account") // Nome da tabela no PostgreSQL
 
 public class SavingsAccount extends Account{
 
     // Taxa percentual de juros aplicada ao rendimento (ex: 0.02 representa 2%)
     private double rateOfReturn;
 
-    /**
-     * Construtor para inicializar uma conta poupança com taxa personalizada.
-     * - Nome do titular da conta
-     * - Saldo inicial depositado
-     * - Taxa de rendimento da poupança
-     */
+    // O Construtor padrão que o Hibernate EXIGE
+    public SavingsAccount(){
+        super();
+    }
 
     public SavingsAccount(String holder, double initialBalance, double rateOfReturn) {
         super(holder, initialBalance);

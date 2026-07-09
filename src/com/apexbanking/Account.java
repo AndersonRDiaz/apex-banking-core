@@ -1,18 +1,29 @@
 package com.apexbanking;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Classe base que representa uma conta bancária genérica no ecossistema Apex Banking.
- * Define a estrutura de dados essencial e os comportamentos padrão de movimentação financeira,
- * como depósitos e saques, servindo de fundação para tipos de contas mais especializados.
- */
+@Entity // 1. Diz ao Java que isso vai virar uma tabela no PostgreSQL
+@Table(name = "tb_account") // 2. Dá o nome da tabela no banco de dados
+@Inheritance(strategy = InheritanceType.JOINED) // 3. Organiza como as classes filhas vão se conectar no banco
 
-public class Account {
-
-    protected ArrayList<String> historic;
+public abstract class Account {
+    @Id // 4. Define a Chave Primária no banco
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 5. O banco gera esse número
+    private Long Id;
     protected String holder; // Titular
     protected double balance; // Saldo
+
+    // 6. Transforma o seu ArrayList em uma tabela de histórico interligada
+    @ElementCollection
+    @CollectionTable(name = "tb_account_historic", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "transaction_description")
+    protected List<String> historic = new ArrayList<>();
+
+    // Construtor padrão exigido pelo Hibernate/JPA
+    public Account(){
+    }
 
     // Construtor para inicializar uma conta bancária
     public Account(String holder, double initialBalance) {

@@ -1,15 +1,18 @@
 package com.apexbanking;
 
-/**
- * Representa uma conta corrente no ecossistema Apex Banking.
- * Esta classe estende a conta básica adicionando a funcionalidade de cheque especial (overdraft),
- * permitindo que o cliente realize saques além do seu saldo real, até um limite predefinido.
- */
+import jakarta.persistence.*;
 
+@Entity // Diz ao Hibernate que esta classe também é uma tabela no banco
+@Table(name = "tb_checking_account") // Dá o nome da tabela específica no PostgreSQL
 public class CheckingAccount extends Account{
 
     // Limite máximo de crédito concedido pelo banco para saldo negativo
     private double overdraftLimit;
+
+    // O Construtor padrão que o Hibernate EXIGE
+    public CheckingAccount(){
+        super();
+    }
 
     // Construtor para inicializar uma conta corrente com cheque especial.
     public CheckingAccount(String holder, double initialBalance, double overdraftLimit) {
