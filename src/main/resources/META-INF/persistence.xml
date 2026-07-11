@@ -14,8 +14,8 @@
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/apex_banking" />
-            <property name="jakarta.persistence.jdbc.user" value="postgres" />
-            <property name="jakarta.persistence.jdbc.password" value="123456" />
+            <property name="jakarta.persistence.jdbc.user" value="christiandiaz" />
+            <property name="jakarta.persistence.jdbc.password" value="040902" />
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.show_sql" value="true" />
