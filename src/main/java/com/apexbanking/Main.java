@@ -12,8 +12,8 @@ public class Main {
         try {
             System.out.println("\n--- TESTE 1: Criando e Salvando uma Conta ---");
             // Criando uma conta fictícia para o teste
-            CheckingAccount novaConta = new CheckingAccount("Ing Christian Diaz", 5000.0, 1000.0);
-            novaConta.deposit(1500.0); // Adicionando uma movimentação
+            CheckingAccount novaConta = new CheckingAccount("Anderson Diaz", 8000.0, 1000.0);
+            novaConta.deposit(1900.0); // Adicionando uma movimentação (Deposito)
 
             // Salvando no PostgreSQL através do Hibernate
             repository.save(novaConta);
@@ -33,7 +33,7 @@ public class Main {
             System.err.println(" Ocorreu um erro durante os testes no banco:");
             e.printStackTrace();
         } finally {
-            // 3. Fechar as conexões do EntityManagerFactory ao encerrar a aplicação
+            // Fechar as conexões do EntityManagerFactory ao encerrar a aplicação
             System.out.println("\n Encerrando conexões com o banco de dados...");
             repository.close();
             System.out.println(" Aplicação finalizada com sucesso!");

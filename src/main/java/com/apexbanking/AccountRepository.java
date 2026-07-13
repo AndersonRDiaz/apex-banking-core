@@ -34,7 +34,7 @@ public class AccountRepository {
         }
     }
 
-    // Metodo para buscar uma conta pelo ID único do banco de dados
+    // Metodo para buscar uma conta pelo ID no banco de dados
     public Account findById(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -44,7 +44,7 @@ public class AccountRepository {
         }
     }
 
-    // Metodo Enterprise para listar todas as contas registradas no banco (Polimorfismo puro)
+    // Lista todas as contas registradas no banco utilizando JPQL ()
     public List<Account> findAll() {
         EntityManager em = emf.createEntityManager();
         try {

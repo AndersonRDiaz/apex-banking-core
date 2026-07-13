@@ -4,18 +4,18 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity // 1. Diz ao Java que isso vai virar uma tabela no PostgreSQL
-@Table(name = "tb_account") // 2. Dá o nome da tabela no banco de dados
+@Entity
+@Table(name = "tb_account")
 @Inheritance(strategy = InheritanceType.JOINED) // 3. Organiza como as classes filhas vão se conectar no banco
 
 public abstract class Account {
-    @Id // 4. Define a Chave Primária no banco
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 5. O banco gera esse número
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     protected String holder; // Titular
     protected double balance; // Saldo
 
-    // 6. Transforma o seu ArrayList em uma tabela de histórico interligada
+    // Transforma o seu ArrayList em uma tabela de histórico interligada
     @ElementCollection
     @CollectionTable(name = "tb_account_historic", joinColumns = @JoinColumn(name = "account_id"))
     @Column(name = "transaction_description")
